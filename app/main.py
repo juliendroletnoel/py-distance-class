@@ -3,17 +3,23 @@ class Distance (object):
     def __init__(self, km: float) -> None:
         self.km = km
 
-    def __repr__(self) -> None:
-        print(f"Distance(km={self.km})")
+    def __repr__(self) -> str:
+        return f"Distance(km={self.km})"
 
-    def __str__(self) -> None:
-        print(f"Distance: {self.km} kilometers")
+    def __str__(self) -> str:
+        return f"Distance: {self.km} kilometers"
 
     def __add_(self, distance: object) -> object:
+        if isinstance(distance, (int, float)):
+            return Distance(self.km + distance)
+
         return Distance(self.km + distance.km)
 
-    def __iadd__(self, distance: int) -> object:
-        return Distance(self.km + distance)
+    def __iadd__(self, distance: int) -> None:
+        if isinstance(distance, (int, float)):
+            self.km = self.km + distance
+        else:
+            self.km = self.km + distance.km
 
     def __mul__(self, multiplicator: int) -> object:
         return Distance(self.km * multiplicator)
