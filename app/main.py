@@ -3,10 +3,10 @@ class Distance (object):
     def __init__(self, km: float) -> None:
         self.km = km
 
-    def __repr__(self):
+    def __repr__(self) -> None:
         print(f"Distance(km={self.km})")
 
-    def __str__(self):
+    def __str__(self) -> None:
         print(f"Distance: {self.km} kilometers")
 
     def __add_(self, distance: object) -> object:
