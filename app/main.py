@@ -1,5 +1,6 @@
 from typing import Self
 
+
 class Distance (object):
 
     def __init__(self, km: float) -> None:
@@ -25,10 +26,10 @@ class Distance (object):
         self.km = self.km + distance.km
         return self
 
-    def __mul__(self, multiplicator: int) -> Self:
+    def __mul__(self, multiplicator: float) -> Self:
         return Distance(self.km * multiplicator)
 
-    def __truediv__(self, divisor: int) -> Self:
+    def __truediv__(self, divisor: float) -> Self:
         return Distance(round(self.km / divisor, 2))
 
     def __lt__(self, distance: Self) -> bool:
