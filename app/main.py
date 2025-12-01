@@ -1,3 +1,5 @@
+from typing import Self
+
 class Distance (object):
 
     def __init__(self, km: float) -> None:
@@ -9,13 +11,13 @@ class Distance (object):
     def __str__(self) -> str:
         return f"Distance: {self.km} kilometers"
 
-    def __add__(self, distance: object) -> object:
+    def __add__(self, distance: Self) -> Self:
         if isinstance(distance, (int, float)):
             return Distance(self.km + distance)
 
         return Distance(self.km + distance.km)
 
-    def __iadd__(self, distance: int) -> object:
+    def __iadd__(self, distance: Self) -> Self:
         if isinstance(distance, (int, float)):
             self.km = self.km + distance
             return self
@@ -23,33 +25,33 @@ class Distance (object):
         self.km = self.km + distance.km
         return self
 
-    def __mul__(self, multiplicator: int) -> object:
+    def __mul__(self, multiplicator: int) -> Self:
         return Distance(self.km * multiplicator)
 
-    def __truediv__(self, divisor: int) -> object:
+    def __truediv__(self, divisor: int) -> Self:
         return Distance(round(self.km / divisor, 2))
 
-    def __lt__(self, distance: object) -> bool:
+    def __lt__(self, distance: Self) -> bool:
         if isinstance(distance, (int, float)):
             return self.km < distance
         return self.km < distance.km
 
-    def __le__(self, distance: object) -> bool:
+    def __le__(self, distance: Self) -> bool:
         if isinstance(distance, (int, float)):
             return self.km <= distance
         return self.km <= distance.km
 
-    def __eq__(self, distance: object) -> bool:
+    def __eq__(self, distance: Self) -> bool:
         if isinstance(distance, (int, float)):
             return self.km == distance
         return self.km == distance.km
 
-    def __ge__(self, distance: object) -> bool:
+    def __ge__(self, distance: Self) -> bool:
         if isinstance(distance, (int, float)):
             return self.km >= distance
         return self.km >= distance.km
 
-    def __gt__(self, distance: object) -> bool:
+    def __gt__(self, distance: Self) -> bool:
         if isinstance(distance, (int, float)):
             return self.km > distance
         return self.km > distance.km
